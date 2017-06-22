@@ -101,7 +101,7 @@ for(un_b in b) {
 
 grafico_mom = plot(b,ecms_mom, col="green")
 grafico_mv = plot(b,ecms_mv)
-grafico_med = plot(b,ecms_med)
+grafico_med = plot(b,ecms_med, col="blue")
 
 # Elegimos el de momentos.
 
@@ -118,9 +118,9 @@ for(un_n in n) {
   step = step + 1
 }
 
-grafico_mom = plot(n,ecms_mom, col="red")
+grafico_mom = plot(n,ecms_mom, col="green")
 grafico_mv = plot(n,ecms_mv)
-grafico_med = plot(n,ecms_med)
+grafico_med = plot(n,ecms_med, col="blue")
 
 # Sospechamos que el Med es el unico inconsistente
 
@@ -150,11 +150,14 @@ for(nrep in 1:1000) {
 sesgo_mv = b - mean(lista_de_estimadores_mv)
 var_mv = var(lista_de_estimadores_mv)
 ecm_mv = var_mv + sesgo_mv**2
+print(sesgo_mv) ; print(var_mv) ; print(ecm_mv)
 
 sesgo_mom = b - mean(lista_de_estimadores_mom)
 var_mom = var(lista_de_estimadores_mom)
 ecm_mom = var_mom + sesgo_mom**2
+print(sesgo_mom) ; print(var_mom) ; print(ecm_mom)
 
 sesgo_med = b - mean(lista_de_estimadores_med)
 var_med = var(lista_de_estimadores_med)
 ecm_med = var_med + sesgo_med**2
+print(sesgo_med) ; print(var_med) ; print(ecm_med)
