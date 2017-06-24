@@ -1,22 +1,27 @@
 # Ejercicio 1
 
-n = 1000 #para que no se rompa el script
-b = 1000 #para que no se rompa el script
-muestra_aleatoria = runif(n, 0, b)
+estimador_mom_b <- function(n,b,muestra_aleatoria) {
+  if (missing(muestra_aleatoria) && !(missing(b) && missing(n))) muestra_aleatoria = runif(n, 0, b)
+  return (2*mean(muestra_aleatoria))
+}
 
-estimador_mom_b = 2*mean(muestra_aleatoria)
-
-estimador_mv_b = max(muestra_aleatoria)
+estimador_mv_b <- function(n,b,muestra_aleatoria) {
+  if (missing(muestra_aleatoria) && !(missing(b) && missing(n))) muestra_aleatoria = runif(n, 0, b)
+  return (max(muestra_aleatoria))
+}
 
 # Ejercicio 2
-estimador_med_b = median(muestra_aleatoria)
+estimador_med_b <- function(n,b,muestra_aleatoria) {
+  if (missing(muestra_aleatoria) && !(missing(b) && missing(n))) muestra_aleatoria = runif(n, 0, b)
+  return (2*median(muestra_aleatoria))
+}
 
 # Ejercicio 3
 b = 1; n = 15 ; muestra_aleatoria = runif(n, 0, b)
 muestra_aleatoria = runif(n, 0, b)
-estimador_mom_b = 2*mean(muestra_aleatoria)
-estimador_mv_b = max(muestra_aleatoria)
-estimador_med_b = median(muestra_aleatoria)
+estimador_mom_b_ej3 = estimador_mom_b(n,b,muestra_aleatoria)
+estimador_mv_b_ej3 = estimador_mv_b(n,b,muestra_aleatoria)
+estimador_med_b_ej3 = estimador_med_b(n,b,muestra_aleatoria)
 print(estimador_mom_b) ; print(estimador_mv_b) ; print(estimador_med_b)
 
 error_estimador_mom_b = abs(1 - estimador_mom_b)
@@ -88,9 +93,9 @@ simulacion_med = function(b, n){
 
 # Ejercicio 6
 n = 15; b = seq(0.5, 2, 0.01)
-ecms_mom = seq(1,150,1)
-ecms_mv = seq(1,150,1)
-ecms_med = seq(1,150,1)
+ecms_mom = 1:151
+ecms_mv = 1:151
+ecms_med = 1:151
 step = 1
 for(un_b in b) {
   ecms_mom[step] = simulacion_mom(un_b,n)
@@ -99,17 +104,17 @@ for(un_b in b) {
   step = step + 1
 }
 
-grafico_mom = plot(b,ecms_mom, col="green")
-grafico_mv = plot(b,ecms_mv)
-grafico_med = plot(b,ecms_med, col="blue")
+grafico_mom = points(b,ecms_mom, col="green")
+grafico_mv = points(b,ecms_mv)
+grafico_med = plot(b,ecms_med, col="blue",  ylab="ECM")
 
 # Elegimos el de momentos.
 
 # Ejercicio 7
 n = c(15,30,50,100,150,200); b = 1
-ecms_mom = seq(1,6,1)
-ecms_mv = seq(1,6,1)
-ecms_med = seq(1,6,1)
+ecms_mom = 1:6
+ecms_mv = 1:6
+ecms_med = 1:6
 step = 1
 for(un_n in n) {
   ecms_mom[step] = simulacion_mom(b,un_n)
@@ -118,9 +123,9 @@ for(un_n in n) {
   step = step + 1
 }
 
-grafico_mom = plot(n,ecms_mom, col="green")
-grafico_mv = plot(n,ecms_mv)
-grafico_med = plot(n,ecms_med, col="blue")
+grafico_mom = plot(n,ecms_mom, col="green", ylim=c(0,0.3), ylab="ECM")
+grafico_mv = points(n,ecms_mv)
+grafico_med = points(n,ecms_med, col="blue")
 
 # Sospechamos que el Med es el unico inconsistente
 
