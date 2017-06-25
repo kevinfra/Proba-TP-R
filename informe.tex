@@ -74,7 +74,6 @@ La diferencia que hay entre cada uno, al parecer el $b_{med}$ es el que se acerc
 
 \end{tabular}
 \end{table}
-
-En este caso, preferimo el $b_{med}$, ya que es el que más se acerca al valor real y siendo que el que posee el menor ECM.
+Observamos que tanto el $b_{mom}$ como el $b_{mv}$ ambos tienen un sesgo distinto a 0, mientras que el sesgo de $b_{med}$ es prácticamente 0 (es decir el valor de esperado de $b_{med}$ es b). Además, el estimador de momentos y el de máxima verosimilitud presentan varianza y ECM mucho mayor que el de $b_{med}$ (sobre todo el $b_{mv}$). Esto se debe a que el valor que está alejado del resto de los valores de la muestra (el primer elemento es cien veces más grande) hace que crezca tanto la varianza como el ECM de los primeros dos estimadores mientras que por la naturaleza del $b_{med}$ (mira el valor intermedio de la muestra), este estimador no es afectado tanto por el outlier. Elegimos el $b_{med}$ ya que no solo tiene el menor sesgo, sino también al ser resistente a valores atípicos, tiene menor ECM y varianza por lo que es más preciso y se acerca más al valor real de b.
 
 \end{document}
