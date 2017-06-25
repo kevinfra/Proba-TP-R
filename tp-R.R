@@ -103,7 +103,7 @@ for(un_b in b) {
   ecms_med[step] = simulacion_med(un_b,n)
   step = step + 1
 }
-grafico_med = plot(b,ecms_med, col="blue",ylim=c(0,1),  ylab="ECM")
+grafico_med = plot(b,ecms_med, col="blue",ylim=c(0,0.3),  ylab="ECM")
 grafico_mom = points(b,ecms_mom, col="green")
 grafico_mv = points(b,ecms_mv)
 
@@ -122,7 +122,7 @@ for(un_n in n) {
   step = step + 1
 }
 
-grafico_mom = plot(n,ecms_mom, col="green", ylim=c(0,0.3), ylab="ECM")
+grafico_mom = plot(n,ecms_mom, col="green", ylim=c(0,0.1), ylab="ECM")
 grafico_mv = points(n,ecms_mv)
 grafico_med = points(n,ecms_med, col="blue")
 
