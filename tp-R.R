@@ -1,4 +1,4 @@
-  # Ejercicio 1
+   # Ejercicio 1
   
   estimador_mom_b <- function(n,b,muestra_aleatoria) {
     if (missing(muestra_aleatoria) && !(missing(b) && missing(n))) muestra_aleatoria = runif(n, 0, b)
@@ -22,12 +22,12 @@
   estimador_mom_b_ej3 = estimador_mom_b(n,b,muestra_aleatoria)
   estimador_mv_b_ej3 = estimador_mv_b(n,b,muestra_aleatoria)
   estimador_med_b_ej3 = estimador_med_b(n,b,muestra_aleatoria)
-  print(estimador_mom_b) ; print(estimador_mv_b) ; print(estimador_med_b)
+  print(estimador_mom_b_ej3) ; print(estimador_mv_b_ej3) ; print(estimador_med_b_ej3)
   
-  error_estimador_mom_b = abs(1 - estimador_mom_b_ej3)
-  error_estimador_mv_b = abs(1 - estimador_mv_b_ej3)
-  error_estimador_med_b = abs(1 - estimador_med_b_ej3)
-  print(error_estimador_mom_b) ; print(error_estimador_mv_b) ; print(error_estimador_med_b)
+  error_estimador_mom_b_ej3 = abs(1 - estimador_mom_b_ej3)
+  error_estimador_mv_b_ej3 = abs(1 - estimador_mv_b_ej3)
+  error_estimador_med_b_ej3 = abs(1 - estimador_med_b_ej3)
+  print(error_estimador_mom_b_ej3) ; print(error_estimador_mv_b_ej3) ; print(error_estimador_med_b_ej3)
 
 # Ejercicio 4
 # c)
