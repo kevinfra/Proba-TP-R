@@ -43,9 +43,9 @@ for(nrep in 1:1000) {
 }
 
 # d)
-sesgo_mom = b - mean(lista_de_estimadores_mom)
-sesgo_mv = b - mean(lista_de_estimadores_mv)
-sesgo_med = b - mean(lista_de_estimadores_med)
+sesgo_mom =  mean(lista_de_estimadores_mom)-b
+sesgo_mv = mean(lista_de_estimadores_mv)-b
+sesgo_med = mean(lista_de_estimadores_med)-b
 
 # e)
 var_mom = var(lista_de_estimadores_mom)
@@ -66,7 +66,7 @@ simulacion_mv = function(b, n){
     muestra_aleatoria = runif(n, 0, b)
     lista_de_estimadores_mv[nrep] = max(muestra_aleatoria)
   }
-  sesgo_mv = b - mean(lista_de_estimadores_mv)
+  sesgo_mv = mean(lista_de_estimadores_mv)-b
   var_mv = var(lista_de_estimadores_mv)
   return(var_mv + sesgo_mv**2)
 }
@@ -76,7 +76,7 @@ simulacion_mom = function(b, n){
     muestra_aleatoria = runif(n, 0, b)
     lista_de_estimadores_mom[nrep] = 2*mean(muestra_aleatoria)
   }
-  sesgo_mom = b - mean(lista_de_estimadores_mom)
+  sesgo_mom =  mean(lista_de_estimadores_mom)-b
   var_mom = var(lista_de_estimadores_mom)
   return(var_mom + sesgo_mom**2)
 }
@@ -86,7 +86,7 @@ simulacion_med = function(b, n){
     muestra_aleatoria = runif(n, 0, b)
     lista_de_estimadores_med[nrep] = median(muestra_aleatoria)
   }
-  sesgo_med = b - mean(lista_de_estimadores_med)
+  sesgo_med = mean(lista_de_estimadores_med)-b  
   var_med = var(lista_de_estimadores_med)
   return(var_med + sesgo_med**2)
 }
@@ -103,12 +103,12 @@ for(un_b in b) {
   ecms_med[step] = simulacion_med(un_b,n)
   step = step + 1
 }
-
+grafico_med = plot(b,ecms_med, col="blue",ylim=c(0,1),  ylab="ECM")
 grafico_mom = points(b,ecms_mom, col="green")
 grafico_mv = points(b,ecms_mv)
-grafico_med = plot(b,ecms_med, col="blue",  ylab="ECM")
 
-# Elegimos el de momentos.
+
+# Elegimos el de momentos. Siendo que el de Emv tiene menor ECM elegimos dicho grafico
 
 # Ejercicio 7
 n = c(15,30,50,100,150,200); b = 1
@@ -127,15 +127,16 @@ grafico_mom = plot(n,ecms_mom, col="green", ylim=c(0,0.3), ylab="ECM")
 grafico_mv = points(n,ecms_mv)
 grafico_med = points(n,ecms_med, col="blue")
 
-# Sospechamos que el Med es el unico inconsistente
+# Segun el grafico el estimador mas preciso es Emv,aunque tambien se podria elegir el Emom, pero el Emv el que tiene un menor ECM en los primeros 4 valores de la muestra que el Emom,Sospechamos que el Med es el unico inconsistente. Tanto el Emom y el Emv son consistentes.
 
 muestra = c(0.917,0.247,0.384,0.530,0.798,0.912,0.096,0.684, 0.394, 20.1, 0.769, 0.137, 0.352, 0.332, 0.670)
 n = 15
 estimador_mom_b = 2*mean(muestra)
 estimador_mv_b = max(muestra)
 estimador_med_b = median(muestra)
+print(estimador_mom_b ) ; print(estimador_mv_b) ; print(estimador_med_b)
 
-# La diferencia que hay entre cada uno. Creemos que se debe al outlayer 20.1
+# La diferencia que hay entre cada uno, al parecer el estimador_med_b es el que se acerca mas al valor real, siendo que es uno de los valores de la muestra. Creemos que se debe al outlayer 20.1
 
 # Ejercicio 9
 lista_de_estimadores_mom = seq(1,1000,1)
@@ -152,17 +153,21 @@ for(nrep in 1:1000) {
   lista_de_estimadores_mv[nrep] = max(muestra_aleatoria)
   lista_de_estimadores_med[nrep] = median(muestra_aleatoria)
 }
-sesgo_mv = b - mean(lista_de_estimadores_mv)
+sesgo_mv =mean(lista_de_estimadores_mv)-b  
 var_mv = var(lista_de_estimadores_mv)
 ecm_mv = var_mv + sesgo_mv**2
 print(sesgo_mv) ; print(var_mv) ; print(ecm_mv)
 
-sesgo_mom = b - mean(lista_de_estimadores_mom)
+sesgo_mom = mean(lista_de_estimadores_mom)-b 
 var_mom = var(lista_de_estimadores_mom)
 ecm_mom = var_mom + sesgo_mom**2
 print(sesgo_mom) ; print(var_mom) ; print(ecm_mom)
 
-sesgo_med = b - mean(lista_de_estimadores_med)
+sesgo_med = mean(lista_de_estimadores_med)-b 
 var_med = var(lista_de_estimadores_med)
 ecm_med = var_med + sesgo_med**2
 print(sesgo_med) ; print(var_med) ; print(ecm_med)
+
+#En este caso, preferimo el bmed, ya que es el que mas se acerca al valor real.
+#Siendo que el que posee el menor ECM.
+
