@@ -39,7 +39,7 @@ for(nrep in 1:1000) {
   muestra_aleatoria = runif(n, 0, b)
   lista_de_estimadores_mom[nrep] = 2*mean(muestra_aleatoria)
   lista_de_estimadores_mv[nrep] = max(muestra_aleatoria)
-  lista_de_estimadores_med[nrep] = median(muestra_aleatoria)
+  lista_de_estimadores_med[nrep] = 2*median(muestra_aleatoria)
 }
 
 # d)
@@ -84,7 +84,7 @@ simulacion_med = function(b, n){
   lista_de_estimadores_med = seq(1,1000,1)
   for(nrep in 1:1000) {
     muestra_aleatoria = runif(n, 0, b)
-    lista_de_estimadores_med[nrep] = median(muestra_aleatoria)
+    lista_de_estimadores_med[nrep] = 2*median(muestra_aleatoria)
   }
   sesgo_med = mean(lista_de_estimadores_med)-b  
   var_med = var(lista_de_estimadores_med)
@@ -128,12 +128,12 @@ grafico_mv = points(n,ecms_mv)
 grafico_med = points(n,ecms_med, col="blue")
 
 # Segun el grafico el estimador mas preciso es Emv,aunque tambien se podria elegir el Emom, pero el Emv el que tiene un menor ECM en los primeros 4 valores de la muestra que el Emom,Sospechamos que el Med es el unico inconsistente. Tanto el Emom y el Emv son consistentes.
-
+#Ej 8
 muestra = c(0.917,0.247,0.384,0.530,0.798,0.912,0.096,0.684, 0.394, 20.1, 0.769, 0.137, 0.352, 0.332, 0.670)
 n = 15
 estimador_mom_b = 2*mean(muestra)
 estimador_mv_b = max(muestra)
-estimador_med_b = median(muestra)
+estimador_med_b = 2*median(muestra)
 print(estimador_mom_b ) ; print(estimador_mv_b) ; print(estimador_med_b)
 
 # La diferencia que hay entre cada uno, al parecer el estimador_med_b es el que se acerca mas al valor real, siendo que es uno de los valores de la muestra. Creemos que se debe al outlayer 20.1
@@ -151,7 +151,7 @@ for(nrep in 1:1000) {
   }
   lista_de_estimadores_mom[nrep] = 2*mean(muestra_aleatoria)
   lista_de_estimadores_mv[nrep] = max(muestra_aleatoria)
-  lista_de_estimadores_med[nrep] = median(muestra_aleatoria)
+  lista_de_estimadores_med[nrep] = 2*median(muestra_aleatoria)
 }
 sesgo_mv =mean(lista_de_estimadores_mv)-b  
 var_mv = var(lista_de_estimadores_mv)
