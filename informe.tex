@@ -45,16 +45,17 @@ Vemos que L(b) es decreciente si b mayor o igual que el máximo de los $x_i$ y e
 
 \section{Ejercicio 6}
 \includegraphics[scale=0.85]{ej6.png}
-En este gráfico, los puntos azules representan el estimador de mediana, mientras que los verdes al de momentos y los negros al de máxima verosimilitud.
-Observamos que el de máxima verosimilitud tiene menor error. Por lo tanto elegiríamos ese.
-
+En este gráfico, los puntos azules representan el estimador de mediana, mientras que los verdes al de momentos y los negros al de máxima verosimilitud. Observamos que cuando b es chico, los tres estimadores se comportan de manera similar. Sin embargo, a medida que aumenta b, el ECM del $b_{med}$ es el que más aumenta. Creemos que como el rango de valores que puede tomar la distribución es mayor (uniforme entre 0 y b) y $b_{med}$ depende de la mediana de la muestra, es menos probable que $b_{med}$ esté cerca de b. Por otro lado, el ECM de $b_{mom}$ también aumenta conforme aumenta b (aunque en comparación a $b_{med}$ en menor medida) mientras que $b_{mv}$ se mantiene prácticamente constante (siempre cerca de 0). Finalmente, elegimos $b_{mv}$ como estimador.
 \section{Ejercicio 7}
 \includegraphics[scale=0.85]{ej7.png}
-En este segundo gráfico, cada color representa al mismo estimador que en el Ejercicio 6.
-Observamos que nuevamente el $b_{mv}$ es el que tiene menor ECM. Nos llama la atención que $b_{med}$ tenga un comportamiento tan distinto a los otros dos estimadores. Elegimos nuevamente $b_{mv}$. En todos los casos, pero particularmente en $b_{mv}$ y $b_{mom}$, observamos que el estimador se acerca al valor estimado mientras más grande es el $n$, pero se puede observar en este grafico puntualemnte, el $b_{mv}$ es el que tiene un menor ECM en los primeros 4 valores de la muestra que el $b_{mom}$. Ademas tanto el $b_{mom}$ y el $b_{mv}$ son consistentes.
+En este segundo gráfico, cada color representa al mismo estimador que en el Ejercicio 6. El estimador con menor ECM es $b_{mv}$, luego le sigue $b_{mom}$ y por último $b_{med}$. En los tres casos a medida que aumenta el tamaño de la muestra, menor es el ECM.  Se puede ver como para una muestra grande (n=200) los tres estimadores se comportan de manera similar. Estas observaciones nos permiten sospechar que los tres estimadores son consistentes, a medida que se aumenta el tamaño de la muestra el sesgo decrece (la esperanza del estimador se parece cada vez más a b) y la varianza también (el comportamiento de los tres se hace más parecido conforme aumenta n). Sin embargo, cuando la muestra es chica (n<50) $b_{med}$ se aleja mucho más de b que el resto de los estimadores. Cuando n es chico, $b_{mv}$ es el de menor ECM por lo que lo elegimos como estimador.
 
 \section{Ejercicio 8}
-La diferencia que hay entre cada uno, al parecer el $b_{med}$ es el que se acerca mas al valor real, siendo que es uno de los valores de la muestra. Entendemos que se debe al outlayer 20.1
+bmom= 3.642933
+Bmv= 20.1
+Bmed= 1.06
+Observamos que el $b_{med}$ es el que se acerca más al valor real de b (que es 1). Esto se debe a que $b_{med}$ es resistente a valores atípicos (ya que depende de la mediana por lo que no será afectado por un solo outlier). En nuestra muestra, hay un valor que está muy lejos del resto (20,1) y este hace que $b_{mom}$ y $b_{mv}$ se vean muy afectados. Por eso, en ciertos casos cuando se presentan estos valores atípicos es conveniente estimar mediante un $b_{med}$. 
+
 
 \newpage
 
@@ -74,6 +75,6 @@ La diferencia que hay entre cada uno, al parecer el $b_{med}$ es el que se acerc
 
 \end{tabular}
 \end{table}
-Observamos que tanto el $b_{mom}$ como el $b_{mv}$ ambos tienen un sesgo distinto a 0, mientras que el sesgo de $b_{med}$ es prácticamente 0 (es decir el valor de esperado de $b_{med}$ es b). Además, el estimador de momentos y el de máxima verosimilitud presentan varianza y ECM mucho mayor que el de $b_{med}$ (sobre todo el $b_{mv}$). Esto se debe a que el valor que está alejado del resto de los valores de la muestra (el primer elemento es cien veces más grande) hace que crezca tanto la varianza como el ECM de los primeros dos estimadores mientras que por la naturaleza del $b_{med}$ (mira el valor intermedio de la muestra), este estimador no es afectado tanto por el outlier. Elegimos el $b_{med}$ ya que no solo tiene el menor sesgo, sino también al ser resistente a valores atípicos, tiene menor ECM y varianza por lo que es más preciso y se acerca más al valor real de b.
+Observamos que tanto el $b_{mom}$ como el $b_{mv}$ ambos tienen un sesgo distinto a 0, mientras que el sesgo de $b_{med}$ es prácticamente 0 (es decir el valor esperado de $b_{med}$ es b). Además, el estimador de momentos y el de máxima verosimilitud presentan varianza y ECM mucho mayor que el de $b_{med}$ (sobre todo el $b_{mv}$). Esto se debe a que el valor que está alejado del resto de los valores de la muestra (el primer elemento es cien veces más grande) hace que crezca tanto la varianza como el ECM de los primeros dos estimadores mientras que por la naturaleza del $b_{med}$ (mira el valor intermedio de la muestra), este estimador no es afectado tanto por el outlier. Elegimos el $b_{med}$ ya que no solo tiene el menor sesgo, sino también al ser resistente a valores atípicos, tiene menor ECM y varianza por lo que es más preciso y se acerca más al valor real de b.
 
 \end{document}
