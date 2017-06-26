@@ -51,9 +51,9 @@ En este gráfico, los puntos azules representan el estimador de mediana, mientra
 En este segundo gráfico, cada color representa al mismo estimador que en el Ejercicio 6. El estimador con menor ECM es $b_{mv}$, luego le sigue $b_{mom}$ y por último $b_{med}$. En los tres casos a medida que aumenta el tamaño de la muestra, menor es el ECM.  Se puede ver como para una muestra grande (n=200) los tres estimadores se comportan de manera similar. Estas observaciones nos permiten sospechar que los tres estimadores son consistentes, a medida que se aumenta el tamaño de la muestra el sesgo decrece (la esperanza del estimador se parece cada vez más a b) y la varianza también (el comportamiento de los tres se hace más parecido conforme aumenta n). Sin embargo, cuando la muestra es chica (n<50) $b_{med}$ se aleja mucho más de b que el resto de los estimadores. Cuando n es chico, $b_{mv}$ es el de menor ECM por lo que lo elegimos como estimador.
 
 \section{Ejercicio 8}
-bmom= 3.642933
-Bmv= 20.1
-Bmed= 1.06
+$b_{mom}$= 3.642933
+$b_{mv}$= 20.1
+$b_{med}$= 1.06
 Observamos que el $b_{med}$ es el que se acerca más al valor real de b (que es 1). Esto se debe a que $b_{med}$ es resistente a valores atípicos (ya que depende de la mediana por lo que no será afectado por un solo outlier). En nuestra muestra, hay un valor que está muy lejos del resto (20,1) y este hace que $b_{mom}$ y $b_{mv}$ se vean muy afectados. Por eso, en ciertos casos cuando se presentan estos valores atípicos es conveniente estimar mediante un $b_{med}$. 
 
 
